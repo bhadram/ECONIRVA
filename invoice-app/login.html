@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECONIRVA - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a4d2e 0%, #2d6a4f 50%, #40916c 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .login-container {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .logo {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            background: white;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        
+        .subtitle {
+            color: #1a4d2e;
+            margin-bottom: 30px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        
+        .login-form {
+            margin-bottom: 20px;
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: #1a4d2e;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: #1a4d2e;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+        
+        .login-btn:hover {
+            background: #2d6a4f;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: #999;
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #ddd;
+        }
+        
+        .divider span {
+            padding: 0 15px;
+            font-size: 12px;
+        }
+        
+        .google-btn {
+            width: 100%;
+            padding: 12px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+        
+        .google-btn:hover {
+            border-color: #4285f4;
+            background: #f8f9fa;
+        }
+        
+        .google-btn img {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .error-msg {
+            color: #dc3545;
+            font-size: 13px;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            color: #999;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <img src="../logo.png" alt="ECONIRVA" class="logo">
+        <p class="subtitle"><strong>Invoice Management System</strong></p>
+        
+        <form class="login-form" onsubmit="handleLogin(event)">
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text" id="email" placeholder="Enter your username" required>
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+            <p class="error-msg" id="error-msg">Invalid credentials</p>
+        </form>
+        
+        <p class="footer">© 2025-2026 ECONIRVA Bio Solutions Pvt Ltd</p>
+    </div>
+    
+    <script>
+        // Check if already logged in
+        if (localStorage.getItem('econirva_user')) {
+            window.location.href = 'index.html';
+        }
+        
+        // Initialize default users - FORCE RESET
+        function initUsers() {
+            // Force add default admin if not exists
+            let users = JSON.parse(localStorage.getItem('econirva_users') || '[]');
+            const adminExists = users.find(u => u.email === 'vbhadram');
+            if (!adminExists) {
+                users.push({ email: 'vbhadram', password: 'econirva@123', name: 'Bhadram Varka', role: 'admin' });
+                localStorage.setItem('econirva_users', JSON.stringify(users));
+            }
+            return users;
+        }
+        
+        const authorizedUsers = initUsers();
+        console.log('Users:', authorizedUsers);
+        
+        function handleLogin(e) {
+            e.preventDefault();
+            const username = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            
+            console.log('Attempting login:', username, password);
+            
+            // Get latest users list
+            const users = JSON.parse(localStorage.getItem('econirva_users') || '[]');
+            console.log('Available users:', users);
+            
+            const user = users.find(u => u.email === username && u.password === password);
+            console.log('Found user:', user);
+            
+            if (user) {
+                localStorage.setItem('econirva_user', JSON.stringify({
+                    email: user.email,
+                    name: user.name,
+                    role: user.role,
+                    loginTime: new Date().toISOString()
+                }));
+                window.location.href = 'index.html';
+            } else {
+                document.getElementById('error-msg').style.display = 'block';
+                document.getElementById('error-msg').textContent = 'Invalid username or password';
+            }
+        }
+    </script>
+</body>
+</html>
+
