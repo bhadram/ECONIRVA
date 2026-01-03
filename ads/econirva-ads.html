@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECONIRVA Ads</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #e0e0e0;
+            padding: 30px;
+        }
+
+        .ad-label {
+            text-align: center;
+            color: #333;
+            font-size: 14px;
+            margin: 30px 0 15px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .ad-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        /* ==================== AD 1: INSTAGRAM POST (1080x1080) - Product Showcase ==================== */
+        .ad-instagram-post {
+            width: 540px;
+            height: 620px;
+            background: linear-gradient(145deg, #ffffff 0%, #f0fff0 50%, #e8f5e8 100%);
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .ig-post-header {
+            background: linear-gradient(135deg, #228B22 0%, #1a6b1a 100%);
+            padding: 25px;
+            text-align: center;
+            color: white;
+        }
+
+        .ig-post-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .ig-post-title {
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .ig-post-subtitle {
+            font-size: 12px;
+            opacity: 0.9;
+            letter-spacing: 3px;
+        }
+
+        .ig-post-content {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .ig-post-logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .ig-products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .ig-product-item {
+            background: white;
+            border-radius: 12px;
+            padding: 15px 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border: 2px solid #e8f5e8;
+        }
+
+        .ig-product-icon {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .ig-product-name {
+            font-size: 9px;
+            font-weight: 700;
+            color: #1a5a1a;
+            letter-spacing: 0.5px;
+        }
+
+        .ig-post-cta {
+            background: linear-gradient(135deg, #228B22 0%, #32CD32 100%);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            display: inline-block;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 20px rgba(34,139,34,0.4);
+        }
+
+        .ig-post-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1a5a1a;
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .ig-post-contact {
+            font-size: 10px;
+            line-height: 1.5;
+        }
+
+        .ig-post-qr {
+            width: 50px;
+            height: 50px;
+            background: white;
+            padding: 3px;
+            border-radius: 5px;
+        }
+
+        .ig-post-qr img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ==================== AD 2: INSTAGRAM STORY / WHATSAPP (1080x1920) - Awareness ==================== */
+        .ad-story {
+            width: 360px;
+            height: 700px;
+            background: linear-gradient(180deg, #ffffff 0%, #f0fff0 40%, #e8f5e8 100%);
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            color: #1a5a1a;
+        }
+
+        .story-bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(34,139,34,0.08);
+        }
+
+        .story-bg-circle.c1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            right: -100px;
+        }
+
+        .story-bg-circle.c2 {
+            width: 200px;
+            height: 200px;
+            bottom: 150px;
+            left: -80px;
+        }
+
+        .story-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 25px;
+        }
+
+        .story-logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 30px;
+        }
+
+        .story-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .story-headline {
+            font-size: 14px;
+            letter-spacing: 4px;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .story-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .story-title .highlight {
+            color: #228B22;
+        }
+
+        .story-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .story-features {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .story-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+        }
+
+        .story-feature-icon {
+            width: 35px;
+            height: 35px;
+            background: rgba(34,139,34,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .story-cta {
+            background: linear-gradient(135deg, #228B22 0%, #1a6b1a 100%);
+            color: white;
+            padding: 16px 30px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .story-footer {
+            text-align: center;
+            padding-top: 15px;
+        }
+
+        .story-contact-box {
+            background: linear-gradient(135deg, #228B22 0%, #1a6b1a 100%);
+            border-radius: 15px;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            gap: 10px;
+        }
+
+        .story-contact-info {
+            font-size: 9px;
+            line-height: 1.4;
+            text-align: left;
+            flex: 1;
+        }
+
+        .story-qr {
+            width: 55px;
+            height: 55px;
+            background: white;
+            padding: 3px;
+            border-radius: 8px;
+        }
+
+        .story-qr img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .story-swipe {
+            margin-top: 12px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: #228B22;
+        }
+
+        /* ==================== AD 3: FACEBOOK AD (1200x628) - Lead Generation ==================== */
+        .ad-facebook {
+            width: 600px;
+            height: 360px;
+            background: linear-gradient(135deg, #ffffff 0%, #f0fff0 100%);
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            display: flex;
+        }
+
+        .fb-left {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .fb-logo {
+            width: 90px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .fb-headline {
+            font-size: 11px;
+            color: #228B22;
+            letter-spacing: 3px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .fb-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: #1a5a1a;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .fb-desc {
+            font-size: 12px;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+
+        .fb-cta {
+            background: linear-gradient(135deg, #228B22 0%, #1a6b1a 100%);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+
+        .fb-right {
+            width: 240px;
+            background: linear-gradient(180deg, #228B22 0%, #1a6b1a 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            color: white;
+            text-align: center;
+        }
+
+        .fb-right-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .fb-right-text {
+            font-size: 11px;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+
+        .fb-right-big {
+            font-size: 24px;
+            font-weight: 900;
+        }
+
+        .fb-right-sub {
+            font-size: 10px;
+            margin-top: 15px;
+            padding: 8px 15px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 15px;
+        }
+
+        .fb-contact-strip {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1a5a1a;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            font-size: 10px;
+        }
+
+        .fb-contact-strip .email {
+            color: #90EE90;
+        }
+
+        .fb-qr {
+            width: 40px;
+            height: 40px;
+            background: white;
+            padding: 2px;
+            border-radius: 4px;
+        }
+
+        .fb-qr img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ==================== AD 4: GOOGLE DISPLAY - Medium Rectangle (300x250) ==================== */
+        .ad-google-300x250 {
+            width: 300px;
+            height: 280px;
+            background: linear-gradient(145deg, #ffffff 0%, #f0fff0 50%, #e8f5e8 100%);
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            color: #1a5a1a;
+            padding: 15px;
+            padding-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            border: 2px solid #228B22;
+        }
+
+        .g300-logo {
+            width: 70px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .g300-title {
+            font-size: 18px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .g300-title .highlight {
+            color: #228B22;
+        }
+
+        .g300-desc {
+            font-size: 11px;
+            color: #555;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            flex: 1;
+        }
+
+        .g300-cta {
+            background: linear-gradient(135deg, #228B22 0%, #1a6b1a 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .g300-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1a5a1a;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            font-size: 8px;
+            border-radius: 0 0 6px 6px;
+        }
+
+        .g300-qr {
+            width: 30px;
+            height: 30px;
+            background: white;
+            padding: 2px;
+            border-radius: 3px;
+        }
+
+        .g300-qr img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ==================== AD 5: GOOGLE DISPLAY - Leaderboard (728x90) ==================== */
+        .ad-google-728x90 {
+            width: 728px;
+            height: 100px;
+            background: linear-gradient(90deg, #ffffff 0%, #f0fff0 50%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            color: #1a5a1a;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            border: 2px solid #228B22;
+        }
+
+        .g728-logo {
+            width: 60px;
+            height: auto;
+            margin-right: 25px;
+        }
+
+        .g728-content {
+            flex: 1;
+        }
+
+        .g728-title {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 3px;
+        }
+
+        .g728-title .highlight {
+            color: #228B22;
+        }
+
+        .g728-desc {
+            font-size: 11px;
+            color: #555;
+        }
+
+        .g728-cta {
+            background: linear-gradient(135deg, #228B22 0%, #1a6b1a 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-left: 20px;
+        }
+
+        .g728-contact {
+            font-size: 9px;
+            text-align: right;
+            margin-left: 15px;
+            color: #228B22;
+            line-height: 1.4;
+        }
+
+        .g728-qr {
+            width: 50px;
+            height: 50px;
+            background: white;
+            padding: 3px;
+            border-radius: 5px;
+            margin-left: 15px;
+            border: 2px solid #228B22;
+        }
+
+        .g728-qr img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ==================== AD 6: GOOGLE DISPLAY - Mobile Banner (320x50) ==================== */
+        .ad-google-320x50 {
+            width: 320px;
+            height: 50px;
+            background: linear-gradient(90deg, #ffffff 0%, #f0fff0 100%);
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            color: #1a5a1a;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            border: 2px solid #228B22;
+        }
+
+        .g320-logo {
+            width: 35px;
+            height: auto;
+            margin-right: 12px;
+        }
+
+        .g320-content {
+            flex: 1;
+        }
+
+        .g320-title {
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .g320-desc {
+            font-size: 8px;
+            color: #555;
+        }
+
+        .g320-cta {
+            background: linear-gradient(135deg, #228B22 0%, #1a6b1a 100%);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 15px;
+            font-size: 8px;
+            font-weight: 700;
+        }
+
+        .g320-qr {
+            width: 32px;
+            height: 32px;
+            background: white;
+            padding: 2px;
+            border-radius: 3px;
+            margin-left: 8px;
+            border: 1px solid #228B22;
+        }
+
+        .g320-qr img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ==================== AD 7: PROMOTIONAL AD (1080x1080) ==================== */
+        .ad-promo {
+            width: 540px;
+            height: 640px;
+            background: linear-gradient(145deg, #ffffff 0%, #f0fff0 50%, #e8f5e8 100%);
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            color: #1a5a1a;
+        }
+
+        .promo-ribbon {
+            position: absolute;
+            top: 30px;
+            right: -40px;
+            background: #FFD700;
+            color: #1a5a1a;
+            padding: 8px 50px;
+            font-size: 12px;
+            font-weight: 800;
+            transform: rotate(45deg);
+            letter-spacing: 1px;
+        }
+
+        .promo-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .promo-logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 25px;
+        }
+
+        .promo-headline {
+            font-size: 12px;
+            letter-spacing: 4px;
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+
+        .promo-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .promo-offer {
+            background: linear-gradient(135deg, #228B22 0%, #1a6b1a 100%);
+            padding: 20px 40px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            color: white;
+        }
+
+        .promo-offer-text {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .promo-offer-big {
+            font-size: 28px;
+            font-weight: 900;
+            color: #90EE90;
+        }
+
+        .promo-features {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .promo-feature {
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .promo-cta {
+            background: linear-gradient(135deg, #228B22 0%, #1a6b1a 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .promo-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1a5a1a;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .promo-contact {
+            font-size: 10px;
+            line-height: 1.5;
+        }
+
+        .promo-qr {
+            width: 50px;
+            height: 50px;
+            background: white;
+            padding: 3px;
+            border-radius: 5px;
+        }
+
+        .promo-qr img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- AD 1: INSTAGRAM POST (1080x1080) - Product Showcase -->
+    <p class="ad-label">📸 INSTAGRAM POST (1080x1080) - Product Showcase</p>
+    <div class="ad-container">
+        <div class="ad-instagram-post">
+            <div class="ig-post-header">
+                <div class="ig-post-badge">♻️ 100% BIODEGRADABLE</div>
+                <div class="ig-post-title">Eco-Friendly Bags</div>
+                <div class="ig-post-subtitle">FOR A GREENER TOMORROW</div>
+            </div>
+            <div class="ig-post-content">
+                <img src="../logo.png" alt="ECONIRVA" class="ig-post-logo">
+                <div class="ig-products-grid">
+                    <div class="ig-product-item">
+                        <div class="ig-product-icon">🛍️</div>
+                        <div class="ig-product-name">CARRY BAGS</div>
+                    </div>
+                    <div class="ig-product-item">
+                        <div class="ig-product-icon">🥬</div>
+                        <div class="ig-product-name">GROCERY BAGS</div>
+                    </div>
+                    <div class="ig-product-item">
+                        <div class="ig-product-icon">👔</div>
+                        <div class="ig-product-name">GARMENT BAGS</div>
+                    </div>
+                    <div class="ig-product-item">
+                        <div class="ig-product-icon">🗑️</div>
+                        <div class="ig-product-name">GARBAGE BAGS</div>
+                    </div>
+                    <div class="ig-product-item">
+                        <div class="ig-product-icon">🍽️</div>
+                        <div class="ig-product-name">FOOD BAGS</div>
+                    </div>
+                    <div class="ig-product-item">
+                        <div class="ig-product-icon">📦</div>
+                        <div class="ig-product-name">CUSTOM BAGS</div>
+                    </div>
+                </div>
+                <div class="ig-post-cta">SHOP NOW →</div>
+            </div>
+            <div class="ig-post-footer">
+                <div class="ig-post-contact">
+                    📧 info@econirva.com | 📞 +91 70758 35854 | 🌐 www.econirva.com
+                </div>
+                <div class="ig-post-qr">
+                    <img src="../qr.jpeg" alt="QR">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AD 2: INSTAGRAM STORY / WHATSAPP STATUS (1080x1920) - Awareness -->
+    <p class="ad-label">📱 INSTAGRAM STORY / WHATSAPP STATUS (1080x1920) - Awareness</p>
+    <div class="ad-container">
+        <div class="ad-story">
+            <div class="story-bg-circle c1"></div>
+            <div class="story-bg-circle c2"></div>
+            <div class="story-content">
+                <img src="../logo.png" alt="ECONIRVA" class="story-logo">
+                <div class="story-main">
+                    <div class="story-headline">SAY NO TO PLASTIC</div>
+                    <div class="story-title">
+                        Switch to<br>
+                        <span class="highlight">Biodegradable</span><br>
+                        Bags Today
+                    </div>
+                    <div class="story-desc">
+                        100% compostable bags that decompose naturally in 90-120 days
+                    </div>
+                    <div class="story-features">
+                        <div class="story-feature">
+                            <div class="story-feature-icon">♻️</div>
+                            <span>100% Biodegradable</span>
+                        </div>
+                        <div class="story-feature">
+                            <div class="story-feature-icon">🌱</div>
+                            <span>Eco-friendly & Non-toxic</span>
+                        </div>
+                        <div class="story-feature">
+                            <div class="story-feature-icon">📦</div>
+                            <span>Bulk Orders Available</span>
+                        </div>
+                    </div>
+                    <div class="story-cta">ENQUIRE NOW</div>
+                </div>
+                <div class="story-footer">
+                    <div class="story-contact-box">
+                        <div class="story-contact-info">
+                            📧 info@econirva.com | 📞 +91 70758 35854 | 🌐 www.econirva.com
+                        </div>
+                        <div class="story-qr">
+                            <img src="../qr.jpeg" alt="QR">
+                        </div>
+                    </div>
+                    <div class="story-swipe">⬆️ SWIPE UP</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AD 3: FACEBOOK AD (1200x628) - Lead Generation -->
+    <p class="ad-label">📘 FACEBOOK AD (1200x628) - Lead Generation</p>
+    <div class="ad-container">
+        <div class="ad-facebook">
+            <div class="fb-left">
+                <img src="../logo.png" alt="ECONIRVA" class="fb-logo">
+                <div class="fb-headline">BIODEGRADABLE BAGS MANUFACTURER</div>
+                <div class="fb-title">Replace Plastic with<br>Eco-Friendly Alternatives</div>
+                <div class="fb-desc">Premium quality compostable bags for retail, grocery, food & commercial use. Bulk orders welcome.</div>
+                <div class="fb-cta">GET QUOTE →</div>
+            </div>
+            <div class="fb-right">
+                <div class="fb-right-icon">🌍</div>
+                <div class="fb-right-text">DECOMPOSES IN</div>
+                <div class="fb-right-big">90-120 DAYS</div>
+                <div class="fb-right-sub">♻️ Zero Plastic Waste</div>
+            </div>
+            <div class="fb-contact-strip">
+                <span class="email">📧 info@econirva.com</span>
+                <span>📞 +91 70758 35854</span>
+                <span>🌐 www.econirva.com</span>
+                <div class="fb-qr">
+                    <img src="../qr.jpeg" alt="QR">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AD 4: GOOGLE DISPLAY - Medium Rectangle (300x250) -->
+    <p class="ad-label">🔲 GOOGLE DISPLAY - Medium Rectangle (300x250)</p>
+    <div class="ad-container">
+        <div class="ad-google-300x250">
+            <img src="../logo.png" alt="ECONIRVA" class="g300-logo">
+            <div class="g300-title">
+                <span class="highlight">Biodegradable</span> Bags<br>for Your Business
+            </div>
+            <div class="g300-desc">
+                100% Compostable • Eco-Friendly
+            </div>
+            <div class="g300-cta">Get Quote →</div>
+            <div class="g300-footer">
+                <span>📧 info@econirva.com | 📞 +91 70758 35854</span>
+                <div class="g300-qr">
+                    <img src="../qr.jpeg" alt="QR">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AD 5: GOOGLE DISPLAY - Leaderboard (728x90) -->
+    <p class="ad-label">📏 GOOGLE DISPLAY - Leaderboard (728x90)</p>
+    <div class="ad-container">
+        <div class="ad-google-728x90">
+            <img src="../logo.png" alt="ECONIRVA" class="g728-logo">
+            <div class="g728-content">
+                <div class="g728-title">Switch to <span class="highlight">Biodegradable Bags</span> Today!</div>
+                <div class="g728-desc">100% Compostable • Bulk Orders Welcome</div>
+            </div>
+            <div class="g728-cta">Get Quote</div>
+            <div class="g728-contact">📞 +91 70758 35854</div>
+            <div class="g728-qr">
+                <img src="../qr.jpeg" alt="QR">
+            </div>
+        </div>
+    </div>
+
+    <!-- AD 6: GOOGLE DISPLAY - Mobile Banner (320x50) -->
+    <p class="ad-label">📱 GOOGLE DISPLAY - Mobile Banner (320x50)</p>
+    <div class="ad-container">
+        <div class="ad-google-320x50">
+            <img src="../logo.png" alt="ECONIRVA" class="g320-logo">
+            <div class="g320-content">
+                <div class="g320-title">Biodegradable Bags</div>
+                <div class="g320-desc">📞 +91 70758 35854</div>
+            </div>
+            <div class="g320-cta">Enquire</div>
+            <div class="g320-qr">
+                <img src="../qr.jpeg" alt="QR">
+            </div>
+        </div>
+    </div>
+
+    <!-- AD 7: PROMOTIONAL AD (1080x1080) - Bulk Order Offer -->
+    <p class="ad-label">🎉 PROMOTIONAL AD (1080x1080) - Bulk Order Offer</p>
+    <div class="ad-container">
+        <div class="ad-promo">
+            <div class="promo-ribbon">BULK ORDERS</div>
+            <div class="promo-content">
+                <img src="../logo.png" alt="ECONIRVA" class="promo-logo">
+                <div class="promo-headline">BIODEGRADABLE BAGS</div>
+                <div class="promo-title">Bulk Orders<br>Welcome!</div>
+                <div class="promo-offer">
+                    <div class="promo-offer-text">Best Prices for</div>
+                    <div class="promo-offer-big">WHOLESALE ORDERS</div>
+                </div>
+                <div class="promo-features">
+                    <div class="promo-feature">✅ Custom Printing</div>
+                    <div class="promo-feature">✅ All Sizes</div>
+                    <div class="promo-feature">✅ Fast Delivery</div>
+                </div>
+                <div class="promo-cta">CONTACT US TODAY</div>
+            </div>
+            <div class="promo-footer">
+                <div class="promo-contact">
+                    📧 info@econirva.com | 📞 +91 70758 35854 | 🌐 www.econirva.com
+                </div>
+                <div class="promo-qr">
+                    <img src="../qr.jpeg" alt="QR">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
