@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECONIRVA Quotation Generator - Welcome</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #4CAF50 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .welcome-container {
+            max-width: 800px;
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.2);
+        }
+        
+        .logo-container img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            font-size: 60px;
+            font-weight: 800;
+            color: #1b5e20;
+        }
+        
+        h1 {
+            font-size: 42px;
+            color: #1b5e20;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+        
+        .tagline {
+            font-size: 18px;
+            color: #2e7d32;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+        
+        .version {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        
+        .features {
+            text-align: left;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: #f1f8e9;
+            border-radius: 10px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .feature-icon {
+            font-size: 24px;
+        }
+        
+        .feature-text {
+            font-size: 14px;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .launch-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #2e7d32, #4CAF50);
+            color: white;
+            padding: 18px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 30px;
+            box-shadow: 0 8px 24px rgba(46, 125, 50, 0.4);
+            transition: all 0.3s;
+        }
+        
+        .launch-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(46, 125, 50, 0.5);
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e8f5e9;
+        }
+        
+        .footer p {
+            font-size: 14px;
+            color: #666;
+            margin: 8px 0;
+        }
+        
+        .footer .contact {
+            font-weight: 600;
+            color: #2e7d32;
+        }
+        
+        @media (max-width: 768px) {
+            .welcome-container {
+                padding: 40px 30px;
+            }
+            
+            h1 {
+                font-size: 32px;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <div class="logo-container">
+            <img src="logo.png" alt="ECONIRVA" style="width: 80%; height: 80%; object-fit: contain;">
+        </div>
+        
+        <h1>ECONIRVA</h1>
+        <p class="tagline">Quotation Generator Software</p>
+        
+        <div class="version">Version 1.0.0</div>
+        
+        <p style="font-size: 16px; color: #555; line-height: 1.8; margin: 20px 0;">
+            Professional quotation generation software designed specifically for ECONIRVA Bio Solutions. 
+            Create, manage, and print quotations with ease.
+        </p>
+        
+        <div class="features">
+            <div class="feature-item">
+                <span class="feature-icon">📝</span>
+                <span class="feature-text">Create Quotations</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">👥</span>
+                <span class="feature-text">Manage Customers</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">📦</span>
+                <span class="feature-text">Editable Product Catalog</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">💰</span>
+                <span class="feature-text">Auto Calculations</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">📄</span>
+                <span class="feature-text">PDF Generation</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">💾</span>
+                <span class="feature-text">Save & Manage</span>
+            </div>
+        </div>
+        
+        <a href="index.html" class="launch-button">
+            🚀 Launch Application
+        </a>
+        
+        <div class="footer">
+            <p style="font-size: 16px; font-weight: 600; color: #2e7d32; margin-bottom: 15px;">
+                🌿 Making Earth Greener, One Quotation at a Time
+            </p>
+            <p class="contact">
+                📞 +91 70758 35854 | 📧 info@econirva.com | 🌐 www.econirva.com
+            </p>
+            <p style="font-size: 12px; margin-top: 20px;">
+                Copyright © 2026 ECONIRVA Bio Solutions Pvt. Ltd. All rights reserved.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

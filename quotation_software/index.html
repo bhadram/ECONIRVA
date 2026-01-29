@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECONIRVA Quotation Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <img src="logo.png" alt="ECONIRVA" class="logo">
+                <h1>ECONIRVA</h1>
+                <p>Quotation Generator</p>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-btn active" data-page="new-quote">
+                    <span class="icon">📝</span>
+                    New Quotation
+                </button>
+                <button class="nav-btn" data-page="saved-quotes">
+                    <span class="icon">📋</span>
+                    Saved Quotations
+                </button>
+                <button class="nav-btn" data-page="customers">
+                    <span class="icon">👥</span>
+                    Customers
+                </button>
+                <button class="nav-btn" data-page="products">
+                    <span class="icon">📦</span>
+                    Products
+                </button>
+                <button class="nav-btn" data-page="settings">
+                    <span class="icon">⚙️</span>
+                    Settings
+                </button>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <p>🌿 Making Earth Greener</p>
+                <p class="version">v1.0.0</p>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="app-header">
+                <div class="header-left">
+                    <h2 id="page-title">New Quotation</h2>
+                    <p id="page-subtitle">Create a new quotation for your customer</p>
+                </div>
+                <div class="header-right">
+                    <button class="btn btn-secondary" id="clear-form">
+                        <span class="icon">🔄</span> Clear
+                    </button>
+                    <button class="btn btn-primary" id="preview-btn">
+                        <span class="icon">👁️</span> Preview
+                    </button>
+                    <button class="btn btn-success" id="generate-pdf">
+                        <span class="icon">📄</span> Generate PDF
+                    </button>
+                </div>
+            </header>
+            
+            <!-- New Quotation Page -->
+            <div class="page active" id="new-quote-page">
+                <div class="form-container">
+                    <!-- Quote Info -->
+                    <section class="form-section">
+                        <h3>📋 Quotation Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Quote Number</label>
+                                <input type="text" id="quote-number" placeholder="ECO/2026/001" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Date</label>
+                                <input type="date" id="quote-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Valid Until</label>
+                                <input type="date" id="valid-until" required>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Customer Info -->
+                    <section class="form-section">
+                        <h3>👤 Customer Information</h3>
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label>Customer Name *</label>
+                                <input type="text" id="customer-name" list="customer-list" placeholder="Select or type customer name" required>
+                                <datalist id="customer-list"></datalist>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Contact Number</label>
+                                <input type="tel" id="customer-phone" placeholder="+91 XXXXX XXXXX">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="customer-email" placeholder="customer@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label>GSTIN (Optional)</label>
+                                <input type="text" id="customer-gstin" placeholder="22AAAAA0000A1Z5">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label>Address</label>
+                                <textarea id="customer-address" rows="2" placeholder="Customer address"></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Products Section -->
+                    <section class="form-section">
+                        <div class="section-header">
+                            <h3>📦 Products</h3>
+                            <button class="btn btn-sm btn-primary" id="add-product-btn">
+                                <span class="icon">➕</span> Add Product
+                            </button>
+                        </div>
+                        
+                        <div id="products-container"></div>
+                    </section>
+                    
+                    <!-- Summary Section -->
+                    <section class="form-section summary-section">
+                        <h3>💰 Order Summary</h3>
+                        <div class="summary-grid">
+                            <div class="summary-row">
+                                <span>Subtotal (Excl. GST):</span>
+                                <span id="subtotal-value">₹0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>GST @ 5%:</span>
+                                <span id="gst-value">₹0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Printing Charges:</span>
+                                <span id="printing-value">₹0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Transportation:</span>
+                                <input type="text" id="transport-cost" placeholder="As Actual" style="max-width: 150px; text-align: right;">
+                            </div>
+                            <div class="summary-row total-row">
+                                <span>Total Amount:</span>
+                                <span id="total-value">₹0.00</span>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Additional Notes -->
+                    <section class="form-section">
+                        <h3>📝 Additional Notes</h3>
+                        <textarea id="additional-notes" rows="3" placeholder="Add any special instructions or notes..."></textarea>
+                    </section>
+                </div>
+            </div>
+            
+            <!-- Saved Quotations Page -->
+            <div class="page" id="saved-quotes-page">
+                <div class="page-content">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search quotations..." id="search-quotes">
+                        <button class="btn btn-primary">Search</button>
+                    </div>
+                    <div id="saved-quotes-list" class="quotes-list"></div>
+                </div>
+            </div>
+            
+            <!-- Customers Page -->
+            <div class="page" id="customers-page">
+                <div class="page-content">
+                    <div class="page-actions">
+                        <button class="btn btn-primary" id="add-customer-btn">
+                            <span class="icon">➕</span> Add Customer
+                        </button>
+                    </div>
+                    <div id="customers-list" class="table-container"></div>
+                </div>
+            </div>
+            
+            <!-- Products Page -->
+            <div class="page" id="products-page">
+                <div class="page-content">
+                    <div class="page-actions">
+                        <button class="btn btn-primary" onclick="addNewProduct()">
+                            <span class="icon">➕</span> Add New Product
+                        </button>
+                    </div>
+                    <div id="products-catalog" class="products-grid"></div>
+                </div>
+            </div>
+            
+            <!-- Settings Page -->
+            <div class="page" id="settings-page">
+                <div class="page-content">
+                    <h3>Company Settings</h3>
+                    <div class="settings-form">
+                        <div class="form-group">
+                            <label>Company Name</label>
+                            <input type="text" id="company-name" value="ECONIRVA Bio Solutions Pvt. Ltd.">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="text" id="company-phone" value="+91 70758 35854">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="company-email" value="info@econirva.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Website</label>
+                            <input type="text" id="company-website" value="www.econirva.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <textarea id="company-address" rows="3">Hyderabad, Telangana, India</textarea>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 30px;">Terms & Conditions</h3>
+                    <div class="settings-form">
+                        <div class="form-group">
+                            <label>Default Terms & Conditions (one per line)</label>
+                            <textarea id="terms-conditions" rows="8" placeholder="Enter each term on a new line...">50% advance payment required. Balance on delivery.
+Delivery: 5-7 days for standard orders, 10-15 days for printed orders.
+GST 5% included in prices. Transportation charges extra.
+Valid for 30 days from issue date.
+All products certified compostable as per IS/ISO 17088.</textarea>
+                        </div>
+                        <button class="btn btn-success" onclick="saveSettings()">💾 Save Settings</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Preview Modal -->
+    <div class="modal" id="preview-modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3>📄 Quotation Preview</h3>
+                <button class="modal-close" id="close-preview">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="preview-content"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="close-preview-btn">Close</button>
+                <button class="btn btn-success" id="download-pdf-btn">
+                    <span class="icon">⬇️</span> Download PDF
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

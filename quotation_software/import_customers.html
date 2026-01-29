@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import Customers - ECONIRVA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
+        }
+
+        .section h2 {
+            color: #1b5e20;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="file"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        textarea {
+            min-height: 200px;
+            font-family: 'Monaco', 'Courier New', monospace;
+        }
+
+        .btn {
+            background: #2e7d32;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #1b5e20;
+        }
+
+        .btn-secondary {
+            background: #666;
+        }
+
+        .btn-secondary:hover {
+            background: #444;
+        }
+
+        .btn-success {
+            background: #4CAF50;
+        }
+
+        .btn-success:hover {
+            background: #45a049;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2e7d32;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .preview {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 15px;
+        }
+
+        .preview-item {
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .preview-item:last-child {
+            border-bottom: none;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌿 Import Customers</h1>
+        <p class="subtitle">Import customers from CSV file or paste data directly</p>
+
+        <div id="alert-container"></div>
+
+        <!-- Method 1: CSV Upload -->
+        <div class="section">
+            <h2>📁 Method 1: Upload CSV File</h2>
+            <div class="input-group">
+                <label>Select CSV File</label>
+                <input type="file" id="csv-file" accept=".csv">
+                <p style="font-size: 12px; color: #666; margin-top: 8px;">
+                    Expected format: Single column with header "Customer Name"
+                </p>
+            </div>
+            <button class="btn" onclick="loadFromCSV()">📤 Load from CSV</button>
+        </div>
+
+        <!-- Method 2: Paste Data -->
+        <div class="section">
+            <h2>📋 Method 2: Paste Customer Names</h2>
+            <div class="input-group">
+                <label>Customer Names (one per line)</label>
+                <textarea id="customer-textarea" placeholder="Kaaram
+Kamadhenu
+Andhra Ruchulu
+Fire and Ice
+..."></textarea>
+            </div>
+            <button class="btn" onclick="loadFromTextarea()">📥 Load from Text</button>
+        </div>
+
+        <!-- Preview Section -->
+        <div class="section hidden" id="preview-section">
+            <h2>👁️ Preview</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="total-count">0</div>
+                    <div class="stat-label">Total Customers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="new-count">0</div>
+                    <div class="stat-label">New Customers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="duplicate-count">0</div>
+                    <div class="stat-label">Duplicates</div>
+                </div>
+            </div>
+            <div class="preview" id="preview-list"></div>
+            <div style="margin-top: 20px;">
+                <button class="btn btn-success" onclick="importCustomers()">✅ Import to Quotation Software</button>
+                <button class="btn btn-secondary" onclick="clearPreview()">❌ Cancel</button>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="section">
+            <h2>📖 Instructions</h2>
+            <ol style="line-height: 2; color: #333;">
+                <li>Choose Method 1 (CSV) or Method 2 (Text)</li>
+                <li>Preview the customers to be imported</li>
+                <li>Click "Import to Quotation Software"</li>
+                <li>Open <code>index.html</code> to see imported customers</li>
+            </ol>
+            <p style="margin-top: 15px; color: #666; font-size: 14px;">
+                <strong>Note:</strong> This will merge with existing customers (no duplicates). The quotation software must be open in another tab for changes to sync immediately.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        let customersToImport = [];
+        let existingCustomers = [];
+
+        // Load existing customers from localStorage
+        function loadExistingCustomers() {
+            const saved = localStorage.getItem('econirva_customers');
+            if (saved) {
+                existingCustomers = JSON.parse(saved);
+            }
+        }
+
+        // Load from CSV file
+        function loadFromCSV() {
+            const fileInput = document.getElementById('csv-file');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                showAlert('Please select a CSV file', 'error');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const text = e.target.result;
+                const lines = text.split('\n').map(line => line.trim()).filter(line => line);
+                
+                // Remove header if it exists
+                const customers = lines.filter(line => 
+                    line.toLowerCase() !== 'customer name' && 
+                    line.toLowerCase() !== 'customername' &&
+                    line.toLowerCase() !== 'name'
+                );
+
+                processCustomers(customers);
+            };
+            reader.readAsText(file);
+        }
+
+        // Load from textarea
+        function loadFromTextarea() {
+            const textarea = document.getElementById('customer-textarea');
+            const text = textarea.value;
+
+            if (!text.trim()) {
+                showAlert('Please paste customer names in the text area', 'error');
+                return;
+            }
+
+            const customers = text.split('\n').map(line => line.trim()).filter(line => line);
+            processCustomers(customers);
+        }
+
+        // Process and preview customers
+        function processCustomers(customers) {
+            loadExistingCustomers();
+
+            customersToImport = [];
+            let newCustomers = 0;
+            let duplicates = 0;
+
+            customers.forEach(customer => {
+                const exists = existingCustomers.some(c => 
+                    c.toLowerCase() === customer.toLowerCase()
+                );
+
+                if (!exists) {
+                    customersToImport.push(customer);
+                    newCustomers++;
+                } else {
+                    duplicates++;
+                }
+            });
+
+            // Update stats
+            document.getElementById('total-count').textContent = customers.length;
+            document.getElementById('new-count').textContent = newCustomers;
+            document.getElementById('duplicate-count').textContent = duplicates;
+
+            // Show preview
+            const previewList = document.getElementById('preview-list');
+            if (customersToImport.length === 0) {
+                previewList.innerHTML = '<p style="color: #999; text-align: center; padding: 20px;">All customers already exist (no new customers to import)</p>';
+            } else {
+                previewList.innerHTML = customersToImport.map((customer, i) => 
+                    `<div class="preview-item">${i + 1}. ${customer}</div>`
+                ).join('');
+            }
+
+            document.getElementById('preview-section').classList.remove('hidden');
+
+            showAlert(`Found ${newCustomers} new customers to import (${duplicates} duplicates skipped)`, 'info');
+        }
+
+        // Import customers to localStorage
+        function importCustomers() {
+            if (customersToImport.length === 0) {
+                showAlert('No new customers to import', 'error');
+                return;
+            }
+
+            loadExistingCustomers();
+
+            // Merge and sort
+            const mergedCustomers = [...existingCustomers, ...customersToImport].sort();
+
+            // Save to localStorage
+            localStorage.setItem('econirva_customers', JSON.stringify(mergedCustomers));
+
+            showAlert(`✅ Successfully imported ${customersToImport.length} customers!`, 'success');
+
+            // Clear preview after 2 seconds
+            setTimeout(() => {
+                clearPreview();
+                document.getElementById('csv-file').value = '';
+                document.getElementById('customer-textarea').value = '';
+                showAlert('Import complete! Open the quotation software to see your customers.', 'success');
+            }, 2000);
+        }
+
+        // Clear preview
+        function clearPreview() {
+            document.getElementById('preview-section').classList.add('hidden');
+            customersToImport = [];
+        }
+
+        // Show alert
+        function showAlert(message, type) {
+            const container = document.getElementById('alert-container');
+            const alertClass = `alert-${type}`;
+            container.innerHTML = `
+                <div class="alert ${alertClass}">
+                    ${message}
+                </div>
+            `;
+
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                container.innerHTML = '';
+            }, 5000);
+        }
+
+        // Initialize
+        loadExistingCustomers();
+    </script>
+</body>
+</html>
